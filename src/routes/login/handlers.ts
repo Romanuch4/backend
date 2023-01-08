@@ -1,12 +1,8 @@
 import { Request, Response } from 'express';
 
-export const post = (req: Request, res: Response) => {
+export const post = (req: Request, res: any) => {
   try {
-    if (Math.random() > 0.5) {
-      throw new Error('');
-    } else {
-      res.status(204).json();
-    }
+    res.status(200).json({ token: res.token });
   } catch (err) {
     console.log(err);
     res.status(500).json({

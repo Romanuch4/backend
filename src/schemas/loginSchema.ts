@@ -1,17 +1,22 @@
 import { JSONSchemaType } from 'ajv';
 
 interface Login {
-  authorization: string;
+  login: string;
+  password: string;
 }
 
 export const loginSchema: JSONSchemaType<Login> = {
   type: 'object',
   properties: {
-    authorization: {
+    login: {
+      type: 'string',
+      minLength: 2,
+    },
+    password: {
       type: 'string',
       minLength: 2,
     },
   },
-  required: ['authorization'],
+  required: ['login', 'password'],
   additionalProperties: false,
 };
