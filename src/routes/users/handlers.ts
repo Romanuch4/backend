@@ -7,6 +7,7 @@ const users: { [key: string]: any } = {
 };
 
 export const get = (req: Request, res: Response) => {
+  res.cookie('data', new Date(), { httpOnly: true });
   res.send({ users: [] }).json();
 };
 

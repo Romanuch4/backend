@@ -16,7 +16,13 @@ const app = express();
 
 app.use(express.json()).use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Token'],
+    credentials: true,
+  }),
+);
 
 app.use(limiter(1000, 60000));
 

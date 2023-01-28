@@ -33,7 +33,7 @@ export const auth = (req: Request, res: any, next: NextFunction) => {
 
     if (currUser.password === password) {
       const token = jwt.sign({ role: 'admin' }, key, { algorithm: 'RS256' });
-      res['token'] = token;
+      res.token = token;
       keyStorage.save({ token, key });
       return next();
     }
