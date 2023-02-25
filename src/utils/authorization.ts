@@ -12,8 +12,7 @@ export const authorization = (req: Request, res: Response, next: NextFunction) =
 
   if (typeof token === 'string') {
     try {
-      const verify = jwt.verify(token, keyStorage.getKey(token));
-      console.log(verify);
+      jwt.verify(token, keyStorage.getKey(token));
       next();
     } catch ({ message }) {
       return res.status(403).json({ message });

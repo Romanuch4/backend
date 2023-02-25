@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import helmet from 'helmet';
 
 import { login } from './routes/login/index.js';
 import { logout } from './routes/logout/index.js';
@@ -13,6 +14,8 @@ dotenv.config();
 const port = process.env.PORT || 8080;
 
 const app = express();
+
+app.use(helmet());
 
 app.use(express.json()).use(express.urlencoded({ extended: true }));
 
